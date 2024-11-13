@@ -23,7 +23,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: golddan67/llmops_demo:${{ github.sha }} , iopenstack/llmops_demo:1.0.0
+        tags: golddan67/llmops_demo:${{ github.sha }}
 
   update:
     name: Update Helm Manifests
