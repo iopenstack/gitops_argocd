@@ -3,7 +3,6 @@ on:
   push:
     branches:
     - main
-    - 'helm-*'
   
 jobs:
   build:
@@ -49,4 +48,4 @@ jobs:
         git config --global user.name 'iopenstack'
         git config --global user.email '2339511+iopenstack@users.noreply.github.com'
         git commit -am "updating image tag"
-        git push origin main
+        git push origin master
