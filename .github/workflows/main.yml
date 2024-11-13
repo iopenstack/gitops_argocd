@@ -50,5 +50,5 @@ jobs:
         git commit -am "updating image tag"
         git push
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITTOKEN }}
       
