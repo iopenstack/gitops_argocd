@@ -39,12 +39,12 @@ jobs:
       run: |
         chart_dir="chart"
         new_image_tag=${{ github.sha }}
-        git checkout main
         # Update the values.yaml file with the new image tag
         sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
     
     - name: Commit the changes made
       run: | 
+        git checkout -b main
         git config --global user.name 'iopenstack'
         git config --global user.email '2339511+iopenstack@users.noreply.github.com'
         git commit -am "updating image tag"
