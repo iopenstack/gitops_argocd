@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - 'helm-*'
   
 jobs:
   build:
@@ -25,7 +26,7 @@ jobs:
         push: true
         tags: golddan67/llmops_demo:${{ github.sha }}
 
-  update:
+  release:
     name: Update Helm Manifests
     runs-on: ubuntu-latest
     needs: build
@@ -34,7 +35,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Update Image Tag Values
+    - name: Publish helm chart, Update Image Tag Values
       run: |
         chart_dir="chart"
         new_image_tag=${{ github.sha }}
@@ -48,3 +49,6 @@ jobs:
         git config --global user.email 'drdanhe@gmail.com'
         git commit -am "updating image tag"
         git push
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+      
