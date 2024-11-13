@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: llmops_demo 
+spec:
+  selector:
+    app: llmops_demo
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081 # Match the port where your Go application is running
