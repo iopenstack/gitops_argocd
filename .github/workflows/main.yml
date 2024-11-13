@@ -47,6 +47,6 @@ jobs:
     - name: Commit the changes made
       run: | 
         git config --global user.name 'iopenstack'
-        git config --global user.email 'drdanhe@gmail.com'
+        git config --global user.email '2339511+iopenstack@users.noreply.github.com'
         git commit -am "updating image tag"
         git push origin main
