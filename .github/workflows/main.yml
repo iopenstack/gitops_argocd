@@ -39,7 +39,7 @@ jobs:
       run: |
         chart_dir="chart"
         new_image_tag=${{ github.sha }}
-
+        git checkout main
         # Update the values.yaml file with the new image tag
         sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
     
