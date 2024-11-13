@@ -34,8 +34,9 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-
-    - name: Publish helm chart, Update Image Tag Values
+      with:
+        token: ${{ secrets.GITTOKEN }}
+    - name: Update Image Tag Values
       run: |
         chart_dir="chart"
         new_image_tag=${{ github.sha }}
@@ -48,7 +49,4 @@ jobs:
         git config --global user.name 'iopenstack'
         git config --global user.email 'drdanhe@gmail.com'
         git commit -am "updating image tag"
-        git push
-      with:
-        token: ${{ secrets.GITTOKEN }}
-      
+        git push origin main
