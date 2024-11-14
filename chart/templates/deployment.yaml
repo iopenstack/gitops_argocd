@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: llmops_demo 
+  name: llmops-demo 
 spec:
   replicas: 2 
   selector:
     matchLabels:
-      app: llmops_demo # Add this label
+      app: llmops-demo # Add this label
   template:
     metadata:
       labels:
-        app: llmops_demo
+        app: llmops-demo
     spec:
       containers:
-        - name: llmops_demo
+        - name: llmops-demo
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
           ports:
             - containerPort: 8081
