@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: llmops_demo 
+  name: llmops-demo 
 spec:
   selector:
-    app: llmops_demo
+    app: llmops-demo
   ports:
     - protocol: TCP
       port: 8081
