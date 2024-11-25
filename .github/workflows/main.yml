@@ -23,7 +23,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: golddan67/llmops_demo:${{ github.sha }}
+        tags: mlopsdan/mlopsdemo:${{ github.sha }}
 
   release:
     name: Update Helm Manifests
@@ -39,13 +39,13 @@ jobs:
       run: |
         chart_dir="chart"
         new_image_tag=${{ github.sha }}
-
         # Update the values.yaml file with the new image tag
         sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
     
     - name: Commit the changes made
       run: | 
+        git checkout -b main
         git config --global user.name 'iopenstack'
         git config --global user.email '2339511+iopenstack@users.noreply.github.com'
         git commit -am "updating image tag"
-        git push origin main
+        git push -f origin main 
